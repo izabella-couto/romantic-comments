@@ -1,0 +1,372 @@
+:root {
+  --sky-top: #fbe6f0;
+  --sky-bottom: #f3d9ec;
+  --blossom: #ffc4dc;
+  --blossom-deep: #ff9dc1;
+  --rose: #e8628f;
+  --rose-deep: #c94a74;
+  --plum: #5a3652;
+  --plum-soft: #8a6580;
+  --cream: #fff7fa;
+  --gold: #f2c66d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: var(--plum);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: "Quicksand", sans-serif;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+  background: rgba(255, 247, 250, 0.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(232, 98, 143, 0.15);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--rose-deep);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo::before {
+  content: "❀";
+  color: var(--blossom-deep);
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--plum);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--rose);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover {
+  color: var(--rose-deep);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--sky-top) 0%,
+    var(--sky-bottom) 55%,
+    #f6e0ee 100%
+  );
+  overflow: hidden;
+  padding-top: 70px;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  font-size: 1.4rem;
+  color: var(--blossom-deep);
+  opacity: 0.85;
+  animation: fall linear infinite;
+  user-select: none;
+  pointer-events: none;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) translateX(40px) rotate(340deg);
+    opacity: 0.3;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-family: "Caveat", cursive;
+  color: var(--rose-deep);
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  color: var(--rose-deep);
+  font-weight: 700;
+  line-height: 1.05;
+  text-shadow: 0 2px 18px rgba(255, 196, 220, 0.7);
+}
+
+.hero p {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  color: var(--plum-soft);
+  line-height: 1.6;
+}
+
+.hero-cta {
+  margin-top: 34px;
+  display: inline-block;
+  background: var(--rose);
+  color: #fff;
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(232, 98, 143, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(232, 98, 143, 0.45);
+}
+
+.scene {
+  width: min(760px, 92vw);
+  margin: 44px auto 0;
+}
+
+/* ---------- POSTAGENS ---------- */
+.section {
+  padding: 110px 6% 90px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.section-head .kicker {
+  font-family: "Caveat", cursive;
+  color: var(--rose-deep);
+  font-size: 1.3rem;
+}
+.section-head h2 {
+  font-size: 2.2rem;
+  color: var(--plum);
+  margin-top: 2px;
+}
+.section-head span {
+  color: var(--rose);
+}
+
+.post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(90, 54, 82, 0.12);
+}
+
+/* Mantém o comportamento de colunas normalmente */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: start; /* Impede que os cards estiquem verticalmente se um abrir mais que o outro */
+}
+
+/* O article virou details */
+.post-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 28px 24px;
+  border: 1px solid rgba(232, 98, 143, 0.12);
+  box-shadow: 0 12px 30px rgba(90, 54, 82, 0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+/* O span virou summary */
+.post-tag {
+  display: inline-block;
+  background: var(--blossom);
+  color: var(--rose-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  list-style: none; /* Remove a setinha nativa no Chrome/Firefox */
+}
+
+/* Remove a setinha nativa no Safari */
+.post-tag::-webkit-details-marker {
+  display: none;
+}
+
+.post-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--plum);
+}
+.post-card p {
+  font-size: 0.92rem;
+  color: var(--plum-soft);
+  line-height: 1.55;
+}
+.post-meta {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--rose-deep);
+  font-weight: 700;
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+}
+
+/* ---------- SOBRE NÓS ---------- */
+.about {
+  background: linear-gradient(180deg, #fff 0%, #fdf1f6 100%);
+}
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-text .kicker {
+  font-family: "Caveat", cursive;
+  color: var(--rose-deep);
+  font-size: 1.3rem;
+}
+.about-text h2 {
+  font-size: 2rem;
+  margin: 2px 0 18px;
+}
+.about-text p {
+  color: var(--plum-soft);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.about-badge {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream);
+  border: 1px dashed var(--blossom-deep);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  color: var(--rose-deep);
+}
+
+.about-art {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  text-align: center;
+  padding: 34px 20px 40px;
+  color: var(--plum-soft);
+  font-size: 0.85rem;
+  background: #fdf1f6;
+  border-top: 1px solid rgba(232, 98, 143, 0.15);
+}
+footer span {
+  color: var(--rose-deep);
+  font-family: "Caveat", cursive;
+  font-size: 1.1rem;
+}
+
+/* 2. O SEU GRID */
+.mosaico {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%; /* Garante que ele seja responsivo */
+
+  /* Centraliza os elementos internos horizontalmente dentro de suas próprias células do grid */
+  justify-items: center;
+}
+
+/* 3. ELEMENTOS INTERNOS (Apenas exemplo se forem blocos/cards) */
+.mosaico > * {
+  /* Se você quiser que o texto/conteúdo de DENTRO de cada item também fique centralizado: */
+  text-align: center;
+}
+
+.mosaico img {
+  max-width: 60%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    display: none;
+  }
+  .about-wrap {
+    grid-template-columns: 1fr;
+  }
+}
